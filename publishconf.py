@@ -5,7 +5,7 @@ import sys
 sys.path.insert(0, ".")
 from pelicanconf import *
 
-SITEURL = "https://yubing-li.github.io"
+SITEURL = "https://liyubing05.github.io/myhomepage"
 RELATIVE_URLS = False
 
 # Google Analytics
