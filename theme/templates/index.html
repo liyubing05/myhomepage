@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <img src="{{ SITEURL }}/images/photo.jpg" alt="{{ AUTHOR }}" class="hero-photo">
+    <div class="hero-content">
+        <h1>{{ AUTHOR }}</h1>
+        <p class="hero-subtitle">{{ SITESUBTITLE }}</p>
+        <div class="social-links">
+            {% for name, url in SOCIAL %}
+            <a href="{{ url }}" class="social-link">{{ name }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% for page in pages if page.slug == 'about' %}
+<section class="about-section">
+    {{ page.content }}
+</section>
+{% endfor %}
+
+<section class="highlights">
+    <div class="highlight-card">
+        <h2><a href="{{ SITEURL }}/publications/">Publications</a></h2>
+        <p>Research papers on full waveform inversion, ultrasound imaging, and seismic tomography.</p>
+    </div>
+    <div class="highlight-card">
+        <h2><a href="{{ SITEURL }}/news/">Recent News</a></h2>
+        <ul class="news-list-compact">
+            {% for article in articles[:3] if article.category.name == 'news' %}
+            <li>
+                <span class="news-date">{{ article.date|eng_date }}</span>
+                {{ article.title }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="highlight-card">
+        <h2><a href="{{ SITEURL }}/blog/">Latest Posts</a></h2>
+        <ul class="news-list-compact">
+            {% for article in articles[:3] if article.category.name == 'blog' %}
+            <li>
+                <span class="news-date">{{ article.date|eng_date }}</span>
+                <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}{{ category|title }} — {{ SITENAME }}{% endblock %}
+
+{% block content %}
+<h1>{{ category|title }}</h1>
+<ul class="article-list">
+    {% for article in articles %}
+    <li>
+        <time datetime="{{ article.date.isoformat() }}">{{ article.date|eng_date_full }}</time>
+        <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

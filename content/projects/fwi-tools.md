@@ -1,0 +1,22 @@
+Title: Open Source FWI Tools
+Date: 2024-03-01
+Category: projects
+
+# Open Source FWI Tools
+
+A collection of open-source tools for Full Waveform Inversion research.
+
+## FWI-Python
+
+A Python package for Full Waveform Inversion with support for:
+- 2D and 3D acoustic/elastic wave propagation
+- Multiple misfit functions (L2, OT, cycle-skipping robust)
+- GPU acceleration via CuPy
+
+**GitHub**: [github.com/yubing-li/fwi-python](https://github.com/yubing-li/fwi-python)
+
+## WaveBench
+
+Benchmarking suite for comparing FWI algorithms and misfit functions.
+
+**GitHub**: [github.com/yubing-li/wavebench](https://github.com/yubing-li/wavebench)

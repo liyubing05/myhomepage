@@ -1,0 +1,4 @@
+pelican>=4.11
+markdown>=3.4
+ghp-import>=2.1
+invoke>=2.0

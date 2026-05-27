@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="{{ SITEURL }}/" class="site-name">{{ SITENAME }}</a>
+            <span class="site-subtitle">{{ SITESUBTITLE }}</span>
+            <nav>
+                <input type="checkbox" id="nav-toggle" class="nav-toggle">
+                <label for="nav-toggle" class="nav-toggle-label"><span></span></label>
+                <ul class="nav-menu">
+                    {% for title, url in MENUITEMS %}
+                    <li><a href="{{ SITEURL }}{{ url }}">{{ title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; {{ AUTHOR }} &middot; <a href="https://github.com/yubing-li/homepage">Source</a></p>
+            <p class="social-links">
+                {% for name, url in SOCIAL %}
+                <a href="{{ url }}">{{ name }}</a>{% if not loop.last %} &middot; {% endif %}
+                {% endfor %}
+            </p>
+        </div>
+    </footer>
+
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

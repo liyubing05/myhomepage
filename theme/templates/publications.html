@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Publications — {{ SITENAME }}{% endblock %}
+
+{% block content %}
+<h1>Publications</h1>
+
+{% if PUB_CATEGORIES %}
+<div class="pub-filters">
+    <button class="pub-filter active" onclick="filterPubs('all')">All</button>
+    {% for cat in PUB_CATEGORIES %}
+    <button class="pub-filter" onclick="filterPubs('{{ cat }}')">{{ cat }}</button>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% set ns = namespace(current_year='') %}
+{% for pub in PUBLICATIONS %}
+{% if pub.year != ns.current_year %}
+{% set ns.current_year = pub.year %}
+<h3 class="pub-year">{{ ns.current_year }}</h3>
+{% endif %}
+<div class="pub-entry" data-category="{{ pub.category }}">
+    <div class="pub-title">{{ pub.title }}</div>
+    <div class="pub-authors">{{ pub.authors }}</div>
+    <div class="pub-venue">
+        {% if pub.journal %}{{ pub.journal }}{% else %}{{ pub.booktitle }}{% endif %}
+    </div>
+    <div class="pub-links">
+        {% if pub.doi %}<a href="https://doi.org/{{ pub.doi }}">DOI</a>{% endif %}
+        {% if pub.url %}<a href="{{ pub.url }}">PDF</a>{% endif %}
+        <a href="javascript:void(0)" data-bibtex="{{ pub.key }}">BibTeX</a>
+    </div>
+</div>
+{% endfor %}
+
+{% if not PUBLICATIONS %}
+<p>No publications found. Add entries to <code>data/publications.bib</code>.</p>
+{% endif %}
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+function filterPubs(cat) {
+    document.querySelectorAll('.pub-filter').forEach(function(btn) {
+        btn.classList.toggle('active', btn.textContent.trim() === (cat === 'all' ? 'All' : cat));
+    });
+    document.querySelectorAll('.pub-entry').forEach(function(entry) {
+        entry.style.display = (cat === 'all' || entry.dataset.category === cat) ? '' : 'none';
+    });
+    document.querySelectorAll('.pub-year').forEach(function(h) {
+        var year = h.textContent.trim();
+        var next = h.nextElementSibling;
+        var hasVisible = false;
+        while (next && !next.classList.contains('pub-year')) {
+            if (next.style.display !== 'none') hasVisible = true;
+            next = next.nextElementSibling;
+        }
+        h.style.display = hasVisible ? '' : 'none';
+    });
+}
+</script>
+{% endblock %}

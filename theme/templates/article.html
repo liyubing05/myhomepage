@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} — {{ SITENAME }}{% endblock %}
+
+{% block content %}
+<article class="article">
+    <header class="article-header">
+        <h1>{{ article.title }}</h1>
+        <p class="article-meta">
+            <time datetime="{{ article.date.isoformat() }}">{{ article.date|eng_date_full }}</time>
+            {% if article.category %}
+            in <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+            {% endif %}
+        </p>
+    </header>
+    {{ article.content }}
+</article>
+{% endblock %}

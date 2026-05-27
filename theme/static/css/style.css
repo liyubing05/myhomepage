@@ -1,0 +1,151 @@
+/* === Reset & Base === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --color-bg: #fafbfc;
+    --color-surface: #ffffff;
+    --color-text: #1a1a2e;
+    --color-text-light: #555;
+    --color-primary: #1a56db;
+    --color-primary-dark: #1e40af;
+    --color-border: #e2e8f0;
+    --color-accent: #f0f4ff;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+    --max-width: 860px;
+    --radius: 6px;
+}
+
+html { font-size: 17px; }
+body {
+    font-family: var(--font-sans);
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.65;
+}
+
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
+
+a { color: var(--color-primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* === Header === */
+.site-header {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: 1rem 0;
+    position: sticky; top: 0; z-index: 100;
+}
+.site-header .container {
+    display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.5rem 2rem;
+}
+.site-name {
+    font-size: 1.2rem; font-weight: 700; color: var(--color-text);
+}
+.site-name:hover { text-decoration: none; color: var(--color-primary); }
+.site-subtitle {
+    font-size: 0.85rem; color: var(--color-text-light);
+}
+
+/* === Navigation === */
+.nav-toggle { display: none; }
+.nav-toggle-label { display: none; cursor: pointer; }
+.nav-menu { display: flex; gap: 1.5rem; list-style: none; margin-left: auto; }
+.nav-menu a { font-size: 0.9rem; color: var(--color-text-light); }
+.nav-menu a:hover { color: var(--color-primary); text-decoration: none; }
+
+/* === Hero (homepage) === */
+.hero {
+    padding: 3rem 0 1.5rem;
+    text-align: center;
+}
+.hero-photo {
+    width: 140px; height: 140px; border-radius: 50%;
+    object-fit: cover; margin-bottom: 1rem;
+    border: 3px solid var(--color-border);
+}
+.hero h1 { font-size: 2.2rem; margin-bottom: 0.3rem; }
+.hero-subtitle { font-size: 1.1rem; color: var(--color-text-light); margin-bottom: 1rem; }
+.hero .social-links { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
+.social-link {
+    padding: 0.3rem 0.8rem; background: var(--color-accent); border-radius: var(--radius);
+    font-size: 0.85rem; color: var(--color-primary);
+}
+.social-link:hover { background: var(--color-primary); color: #fff; text-decoration: none; }
+
+/* === Main content === */
+main { padding: 2rem 0 4rem; }
+
+h1 { font-size: 1.7rem; margin-bottom: 0.8rem; }
+h2 { font-size: 1.25rem; margin: 2rem 0 0.6rem; }
+h3 { font-size: 1.05rem; margin: 1.2rem 0 0.4rem; }
+p { margin-bottom: 0.8rem; }
+
+/* === About section (homepage) === */
+.about-section { margin: 1.5rem 0 2rem; }
+.about-section h1 { font-size: 1.3rem; }
+.about-section ul { padding-left: 1.2rem; margin-bottom: 0.8rem; }
+
+/* === Highlight cards (homepage) === */
+.highlights { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.2rem; }
+.highlight-card {
+    background: var(--color-surface); border: 1px solid var(--color-border);
+    border-radius: var(--radius); padding: 1.2rem;
+}
+.highlight-card h2 { margin-top: 0; font-size: 1.1rem; }
+.highlight-card h2 a { color: var(--color-text); }
+.highlight-card h2 a:hover { color: var(--color-primary); }
+
+.news-list-compact { list-style: none; padding: 0; }
+.news-list-compact li { margin-bottom: 0.4rem; font-size: 0.9rem; }
+.news-date { color: var(--color-text-light); font-size: 0.8rem; margin-right: 0.5rem; }
+
+/* === Article & Page === */
+.article-header { margin-bottom: 1.5rem; }
+.article-meta { color: var(--color-text-light); font-size: 0.85rem; }
+.article-list { list-style: none; padding: 0; }
+.article-list li { margin-bottom: 0.6rem; }
+.article-list time { color: var(--color-text-light); font-size: 0.85rem; margin-right: 0.6rem; }
+
+/* === Publications === */
+.pub-filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.pub-filter {
+    padding: 0.3rem 0.8rem; border: 1px solid var(--color-border); border-radius: var(--radius);
+    font-size: 0.85rem; cursor: pointer; background: var(--color-surface); color: var(--color-text-light);
+}
+.pub-filter.active, .pub-filter:hover { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+.pub-year { color: var(--color-text-light); font-size: 0.85rem; font-weight: 600; margin: 1.5rem 0 0.4rem; }
+.pub-entry { margin-bottom: 0.5rem; padding-left: 0.5rem; border-left: 2px solid transparent; }
+.pub-entry:hover { border-left-color: var(--color-primary); }
+.pub-title { font-weight: 600; }
+.pub-authors { font-size: 0.9rem; color: var(--color-text-light); }
+.pub-venue { font-size: 0.85rem; font-style: italic; color: var(--color-text-light); }
+.pub-links { font-size: 0.85rem; margin-top: 2px; }
+.pub-links a { margin-right: 0.7rem; }
+
+/* === Footer === */
+.site-footer {
+    border-top: 1px solid var(--color-border); padding: 1.5rem 0 2.5rem;
+    text-align: center; font-size: 0.85rem; color: var(--color-text-light);
+}
+.site-footer a { color: var(--color-text-light); }
+
+/* === Mobile === */
+@media (max-width: 640px) {
+    .site-header .container { justify-content: space-between; }
+    .nav-toggle-label { display: block; }
+    .nav-toggle-label span {
+        display: block; width: 24px; height: 2px; background: var(--color-text);
+        position: relative;
+    }
+    .nav-toggle-label span::before, .nav-toggle-label span::after {
+        content: ''; display: block; width: 24px; height: 2px; background: var(--color-text);
+        position: absolute; transition: transform 0.2s;
+    }
+    .nav-toggle-label span::before { top: -7px; }
+    .nav-toggle-label span::after { top: 7px; }
+    .nav-menu { display: none; flex-direction: column; width: 100%; gap: 0.5rem; margin-top: 0.5rem; }
+    .nav-toggle:checked ~ .nav-menu { display: flex; }
+    .hero h1 { font-size: 1.6rem; }
+    .highlights { grid-template-columns: 1fr; }
+}
