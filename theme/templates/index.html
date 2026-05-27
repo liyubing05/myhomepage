@@ -37,9 +37,9 @@
         </ul>
     </div>
     <div class="highlight-card">
-        <h2><a href="{{ SITEURL }}/blog/">Latest Posts</a></h2>
+        <h2><a href="{{ SITEURL }}/blog/">Blog &amp; Projects</a></h2>
         <ul class="news-list-compact">
-            {% for article in articles[:3] if article.category.name == 'blog' %}
+            {% for article in (articles|selectattr('category.name', 'equalto', 'blog')|list)[:3] %}
             <li>
                 <span class="news-date">{{ article.date|eng_date }}</span>
                 <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>

@@ -8,7 +8,7 @@ SITEURL = ""
 
 PATH = "content"
 PAGE_PATHS = ["pages"]
-ARTICLE_PATHS = ["blog", "news", "projects"]
+ARTICLE_PATHS = ["blog", "news"]
 STATIC_PATHS = ["images"]
 
 TIMEZONE = "Asia/Shanghai"
@@ -62,7 +62,6 @@ MENUITEMS = (
     ("News", "/news/"),
     ("Teaching", "/teaching/"),
     ("Blog", "/blog/"),
-    ("Projects", "/projects/"),
 )
 
 DEFAULT_PAGINATION = 10
