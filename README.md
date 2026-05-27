@@ -11,8 +11,7 @@ Static site generated from Markdown content and a BibTeX publications file. Push
 - **CV** — education, positions, professional service, funded projects
 - **News** — career milestones, paper acceptances, appointments
 - **Teaching** — graduate recruitment, current students, co-supervised students
-- **Blog** — research notes and tutorials
-- **Projects** — software and research artifacts
+- **Blog & Projects** — research notes, tutorials, software and research artifacts
 
 ## Quick Start
 
@@ -79,8 +78,7 @@ pelican content -s publishconf.py -o output
 │   ├── images/photo.jpg         # Profile photo
 │   ├── pages/                   # Static pages (about, cv, teaching, publications)
 │   ├── news/                    # News items (one .md per item)
-│   ├── blog/                    # Blog posts
-│   └── projects/                # Project pages
+│   ├── blog/                    # Blog posts and project pages
 │
 ├── plugins/
 │   ├── publications_reader.py  # Parses BibTeX and injects data into templates
