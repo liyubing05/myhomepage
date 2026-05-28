@@ -22,14 +22,14 @@
 {% endif %}
 <div class="pub-entry" data-category="{{ pub.category }}">
     <div class="pub-title">{{ pub.title }}</div>
-    <div class="pub-authors">{{ pub.authors }}</div>
+    <div class="pub-authors">{{ pub.authors | safe }}</div>
     <div class="pub-venue">
         {% if pub.journal %}{{ pub.journal }}{% else %}{{ pub.booktitle }}{% endif %}
     </div>
     <div class="pub-links">
         {% if pub.doi %}<a href="https://doi.org/{{ pub.doi }}">DOI</a>{% endif %}
         {% if pub.url %}<a href="{{ pub.url }}">PDF</a>{% endif %}
-        <a href="javascript:void(0)" data-bibtex="{{ pub.key }}">BibTeX</a>
+        <a href="#" class="bibtex-link" data-key="{{ pub.key }}">&#x1F4CB; copy BibTeX</a>
     </div>
 </div>
 {% endfor %}
@@ -59,5 +59,25 @@ function filterPubs(cat) {
         h.style.display = hasVisible ? '' : 'none';
     });
 }
+
+document.querySelectorAll('.bibtex-link').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var key = this.dataset.key;
+        if (bibtexData[key]) {
+            navigator.clipboard.writeText(bibtexData[key]).then(function() {
+                var orig = link.innerHTML;
+                link.innerHTML = '&#x2713; copied!';
+                setTimeout(function() { link.innerHTML = orig; }, 1500);
+            });
+        }
+    });
+});
+
+var bibtexData = {
+{% for pub in PUBLICATIONS %}
+    "{{ pub.key }}": {{ pub.bibtex | tojson | safe }}{% if not loop.last %},{% endif %}
+{% endfor %}
+};
 </script>
 {% endblock %}

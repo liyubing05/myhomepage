@@ -1,8 +1,6 @@
 Title: Teaching & Students
 Slug: teaching
 
-# Teaching & Students
-
 ## Graduate Recruitment
 
 I recruit graduate students in **Signal and Information Processing (081002)** and **Electronic Information (085400)**. Research directions include medical ultrasound and acoustic imaging. Prospective students are welcome to contact me via email or phone.

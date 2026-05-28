@@ -70,11 +70,32 @@ def format_authors(author_str, highlight_name=None):
             formatted.append(f"{parts[1].strip()} {parts[0].strip()}")
         else:
             formatted.append(a)
-        if highlight_name and highlight_name.lower() in a.lower():
+        if highlight_name and highlight_name.lower() in formatted[-1].lower():
             formatted[-1] = f"<strong>{formatted[-1]}</strong>"
-    if len(formatted) > 8:
-        return ", ".join(formatted[:3]) + ", <em>et al.</em>"
     return ", ".join(formatted)
+
+
+def make_bibtex(raw_fields):
+    """Generate a BibTeX string from raw parsed fields."""
+    etype = raw_fields.get("_type", "article")
+    lines = [f"@{etype}{{{raw_fields['_key']},"]
+    field_names = ["author", "title"]
+    if etype == "article":
+        field_names += ["journal", "year"]
+    elif etype == "inproceedings":
+        field_names += ["booktitle", "year"]
+    for fname in field_names:
+        val = raw_fields.get(fname, "")
+        if val:
+            lines.append(f"  {fname:10s} = {{{val}}},")
+    if raw_fields.get("doi"):
+        lines.append(f"  doi       = {{{raw_fields['doi']}}},")
+    if raw_fields.get("note"):
+        lines.append(f"  note      = {{{raw_fields['note']}}},")
+    if raw_fields.get("category"):
+        lines.append(f"  category  = {{{raw_fields['category']}}},")
+    lines.append("}")
+    return "\n".join(lines)
 
 
 def inject_publications(pelican_obj):
@@ -113,6 +134,7 @@ def inject_publications(pelican_obj):
                     "url": e.get("url", ""),
                     "category": cat_label,
                     "abstract": e.get("abstract", ""),
+                    "bibtex": make_bibtex(e),
                 })
 
             pubs.sort(key=lambda x: x["year"], reverse=True)
