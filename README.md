@@ -8,7 +8,7 @@ Personal academic homepage built with [Pelican](https://getpelican.com). Static 
 - **Publications** — 29 papers (2017–2025) auto-generated from `data/publications.bib` with category filters (Journal / Conference), DOI links, and BibTeX copy-to-clipboard
 - **Projects** — self-contained page detailing 5 research directions (USCT, programmable systems, AI-HPC, musculoskeletal imaging, geophysical methods)
 - **News** — career milestones, paper acceptances, appointments
-- **Teaching** — graduate recruitment, current students, co-supervised students
+- **Team** — graduate recruitment, postdocs, current students, visiting students, alumni
 
 ## Quick Start
 
@@ -55,7 +55,7 @@ Your content here.
 Edit the Markdown files in `content/pages/`:
 - `about.md` — homepage content (bio, research, education, positions, service, projects, contact)
 - `projects.md` — detailed project descriptions
-- `teaching.md` — student and recruitment info
+- `team.md` — student and recruitment info
 - `publications.md` — placeholder (publication list is auto-generated)
 
 ### Build for production
@@ -78,7 +78,7 @@ pelican content -s publishconf.py -o output
 │
 ├── content/
 │   ├── images/photo.jpg        # Profile photo
-│   ├── pages/                  # Static pages (about, projects, teaching, publications)
+│   ├── pages/                  # Static pages (about, projects, team, publications)
 │   └── news/                   # News items (one .md per item)
 │
 ├── plugins/

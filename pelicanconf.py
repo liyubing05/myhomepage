@@ -60,7 +60,7 @@ MENUITEMS = (
     ("Publications", "/publications/"),
     ("Projects", "/projects/"),
     ("News", "/news/"),
-    ("Teaching", "/teaching/"),
+    ("Team", "/team/"),
 )
 
 DEFAULT_PAGINATION = 10

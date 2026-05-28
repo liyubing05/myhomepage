@@ -60,8 +60,9 @@ a:hover { text-decoration: underline; }
     text-align: center;
 }
 .hero-photo {
-    width: 140px; height: 140px; border-radius: 50%;
-    object-fit: cover; margin-bottom: 1rem;
+    width: 160px; height: 160px; border-radius: 50%;
+    object-fit: cover; object-position: center 15%;
+    margin-bottom: 1rem;
     border: 3px solid var(--color-border);
 }
 .hero h1 { font-size: 2.2rem; margin-bottom: 0.3rem; }
